@@ -1,3 +1,3 @@
-# BOT-SIGA
+# RITO-BOT
 
-Python Bot to extract data from [SIGA](https://siga.cps.sp.gov.br) (page destined to FATEC students) and display them in a Telegram Bot.
+Python script to extract data from [Riot Games API](https://developer.riotgames.com/apis) and display them in a [Telegram](https://core.telegram.org) Bot.
