@@ -1,4 +1,5 @@
 from src.api import makeRequest
+import os
 
 # retorna as informações de um determinado champion (por id)
 def searchChampion(id, response): 

@@ -1,6 +1,5 @@
 from src.api import makeRequest
 from src.championService import champRotation
-import os
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 load_dotenv()
