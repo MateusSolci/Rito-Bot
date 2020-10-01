@@ -1,9 +1,10 @@
+import os
 import discord
+from dotenv import load_dotenv
 from discord.ext.commands import AutoShardedBot
+load_dotenv()
 
 class RitoBot():
-    token = 'NzYxMjExNzU1MTk1MjY5MTQw.X3XTsQ.8XGiLBcmfhDRVJiYVAYbogT0yFs'
-
     bot = AutoShardedBot(command_prefix='-')
 
     @bot.event
@@ -13,5 +14,5 @@ class RitoBot():
 
 
     def start(self):
-        return self.bot.run('NzYxMjExNzU1MTk1MjY5MTQw.X3XTsQ.8XGiLBcmfhDRVJiYVAYbogT0yFs')
+        return self.bot.run(os.environ.get('token'))
 
