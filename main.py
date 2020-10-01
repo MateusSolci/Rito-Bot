@@ -1,19 +1,22 @@
 from dotenv import load_dotenv
-from API_Resquests.champions import *
+from API_Resquests.ChampionsService import *
 from API_Resquests.summoner import *
+from Discord_App.discordBot import *
 load_dotenv()
 
 
 def main():
     riot_api_url = "https://br1.api.riotgames.com"
+    RitoBot().start()
 
-    champRotation = Champion().champRotation(riot_api_url)
+    # champRotation = Champion().champRotation(riot_api_url)
     
-    print(Summoner().summonerInfo(riot_api_url, "To Voante"))
+    # print(Summoner().summonerInfo(riot_api_url, "To Voante"))
 
 
 if __name__ == "__main__":
-    main()    
+    main()
+    
 
 
 # PROXIMAS FUNÇÕES:
