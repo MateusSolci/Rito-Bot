@@ -1,22 +1,20 @@
 import os
 import discord
 from dotenv import load_dotenv
-from discord.ext.commands import AutoShardedBot, when_mentioned_or
+from discord.ext.commands import AutoShardedBot
 from API_Requests.ChampionsService import *
 from API_Requests.summoner import *
-from Discord_App.discordBot import *
 
 load_dotenv()
 
-
 def main():
     riot_api_url = "https://br1.api.riotgames.com"
-    
-    modulos = ["Comandos"]
-    bot = AutoShardedBot(command_prefix='-')
+
+    modulos = ["discordBot"]
+    bot = AutoShardedBot(command_prefix='-', case_sensitive=True)
 
     @bot.event
-    async def on_ready(self):
+    async def on_ready():
         print(bot.user.name + ' TA ONLINE!')
         await bot.change_presence(activity=discord.Game(name="-help"))
 
@@ -25,7 +23,7 @@ def main():
 
     bot.run(os.environ.get('token'))    
 
-
+    
     # champRotation = Champion().champRotation(riot_api_url)
     # print(Summoner().summonerInfo(riot_api_url, "To Voante"))
 

@@ -13,8 +13,8 @@ class Comandos(commands.Cog):
         await ctx.send("OI !")
 
     @commands.command()
-    async def ping(self, ctx):
-        await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
+    async def tomate(self, ctx):
+        await ctx.send('Ô primo')
 
 def setup(client):
     client.add_cog(Comandos(client))
