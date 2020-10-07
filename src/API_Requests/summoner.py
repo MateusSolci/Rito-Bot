@@ -2,7 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
-from API_Resquests.any_request import *
+from API_Requests.any_request import *
 load_dotenv()
 
 class Summoner():
