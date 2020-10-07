@@ -1,5 +1,5 @@
-from API_Resquests.any_request import makeRequest
-from API_Resquests.ChampionsService import champRotation
+from API_Requests.any_request import makeRequest
+from API_Requests.ChampionsService import champRotation
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 load_dotenv()
