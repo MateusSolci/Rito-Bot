@@ -1,25 +1,20 @@
 import os
 import discord
 from dotenv import load_dotenv
-from discord.ext.commands import AutoShardedBot
+from discord.ext import commands
 load_dotenv()
 
-class RitoBot():
+class Comandos(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    bot = AutoShardedBot(command_prefix='-')
-
-    @bot.event
-    async def on_ready(self):
-        print(bot.user.name + ' TA ONLINE!')
-        await bot.change_presence(activity=discord.Game(name="-help"))
-
-
-    def start(self):
-        return self.bot.run(os.environ.get('token'))
     
     @commands.command()
     async def alo(self, ctx):
         await ctx.send("OI !")
 
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send(f'Pong! {round(bot.latency * 1000)}ms')
+
+def setup(client):
+    client.add_cog(Comandos(client))
