@@ -8,7 +8,7 @@ class RitoBot():
     bot = AutoShardedBot(command_prefix='-')
 
     @bot.event
-    async def on_ready(self):
+    async def on_ready():
         print(bot.user.name + ' TA ONLINE!')
         await bot.change_presence(activity=discord.Game(name="-help"))
 

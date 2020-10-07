@@ -12,5 +12,3 @@ class Comandos(commands.Cog):
         await ctx.send("OI !")
 
 
-def setup(client):
-    client.add_cog(Comandos(client))
