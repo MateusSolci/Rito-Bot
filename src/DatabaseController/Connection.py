@@ -9,9 +9,10 @@ class Connection(object):
 
 
     def __init__(self):
-        self._db = psycopg2.connect(host = os.environ["host"],
-        database = os.environ["database"],
-        user = os.environ["db_user"],
-        password = os.environ["db_passwd"])
+        if self._db == None:
+            self._db = psycopg2.connect(host = os.environ["host"],
+            database = os.environ["database"],
+            user = os.environ["db_user"],
+            password = os.environ["db_passwd"])
 
 
