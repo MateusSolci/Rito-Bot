@@ -23,4 +23,4 @@ def up(cursor):
 
 def down(cursor):
     # TODO rollback code
-    pass
+    cursor.execute('DROP TABLE tabela_info')
