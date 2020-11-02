@@ -19,13 +19,15 @@ def main():
     for modulo in modulos:
         bot.load_extension(modulo)
 
-    bot.run(os.environ.get('token'))    
+    # bot.run(os.environ.get('token'))
+
+    riot_api_url = "https://br1.api.riotgames.com"
+    print(Summoner().summonerIDs(riot_api_url, "To Voante"))
 
 
 if __name__ == "__main__":
     main()
     
-
 
 # PROXIMAS FUNÇÕES:
 # - TOP 3 CHAMP MASTERY - /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}

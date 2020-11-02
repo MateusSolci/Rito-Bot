@@ -2,7 +2,7 @@ import requests
 import json
 
 # retorna o resultado de qualquer request em json
-class Resquest():
+class Request():
     def makeRequest(self, url):
         try:
             response = requests.get(url).json()

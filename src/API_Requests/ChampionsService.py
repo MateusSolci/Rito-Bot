@@ -20,8 +20,8 @@ class Champion():
         weekly_rotation = []
         champions_info_url = "http://ddragon.leagueoflegends.com/cdn/" + self.get_last_patch() + "/data/en_US/champion.json"
         
-        ids_list = Resquest().makeRequest(origin + "/lol/platform/v3/champion-rotations?api_key=" + os.environ.get('key'))
-        champ_list = Resquest().makeRequest(champions_info_url)
+        ids_list = Request().makeRequest(origin + "/lol/platform/v3/champion-rotations?api_key=" + os.environ.get('key'))
+        champ_list = Request().makeRequest(champions_info_url)
 
         for champ_id in ids_list["freeChampionIds"]:
             champ = self.searchChampion(champ_id, champ_list)
@@ -33,7 +33,7 @@ class Champion():
     def get_last_patch(self):
         versions = 'https://ddragon.leagueoflegends.com/api/versions.json'
         
-        parsed_versions = Resquest().makeRequest(versions)
+        parsed_versions = Request().makeRequest(versions)
 
         return parsed_versions[0]
 
