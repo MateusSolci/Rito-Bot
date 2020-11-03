@@ -6,7 +6,7 @@ load_dotenv()
 
 class Champion():
 # retorna as informações de um determinado champion (por id)
-    def searchChampion(self, id, champList): 
+    def search_champion(self, id, champList): 
         for champ in champList["data"]:
             if champList["data"][champ]["key"] == str(id):
                 champion = champList["data"][champ]
@@ -16,7 +16,7 @@ class Champion():
         return champion
 
 # retorna a rotação semanal de campeões
-    def champRotation(self, origin):
+    def champ_rotation(self, origin):
         weekly_rotation = []
         champions_info_url = "http://ddragon.leagueoflegends.com/cdn/" + self.get_last_patch() + "/data/en_US/champion.json"
         
@@ -24,7 +24,7 @@ class Champion():
         champ_list = Request().makeRequest(champions_info_url)
 
         for champ_id in ids_list["freeChampionIds"]:
-            champ = self.searchChampion(champ_id, champ_list)
+            champ = self.search_champion(champ_id, champ_list)
             weekly_rotation.append(champ["name"])
 
         return weekly_rotation

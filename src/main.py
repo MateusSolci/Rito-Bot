@@ -22,7 +22,7 @@ def main():
     # bot.run(os.environ.get('token'))
 
     riot_api_url = "https://br1.api.riotgames.com"
-    print(Summoner().summonerIDs(riot_api_url, "To Voante"))
+    print(Summoner().summoner_ids(riot_api_url, "To Voante"))
 
 
 if __name__ == "__main__":

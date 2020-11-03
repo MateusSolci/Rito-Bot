@@ -17,15 +17,19 @@ class Comandos(commands.Cog):
     
     @commands.command()
     async def rotation(self,ctx):
-        await ctx.send(Champion().champRotation(self.riot_api_url))
+        await ctx.send(Champion().champ_rotation(self.riot_api_url))
 
     @commands.command()
     async def invocador(self, ctx, nick):
-        await ctx.send(Summoner().summonerInfo(self.riot_api_url, nick))
+        await ctx.send(Summoner().summoner_info(self.riot_api_url, nick))
 
     @commands.command()
     async def nice(self,ctx):
         await ctx.send('https://cdn.discordapp.com/attachments/753007614736203861/768559876019978310/alienPls.gif')
+
+    @commands.command()
+    async def info(self, ctx):
+        await ctx.send()
     
 
 
