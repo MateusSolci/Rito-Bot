@@ -8,3 +8,17 @@ def get_latest_version():
     )
     response = db.cur.fetchone()
     return response
+
+
+def get_version_details(version):
+    db = Connection()
+    try:
+        db.cur.execute("""
+            select versao, data_versao, detalhes_versao from tabela_info
+            where versao like %s
+            """, (version,)
+        )
+        response = db.cur.fetchone()
+    except:
+        response = None
+    return response

@@ -31,6 +31,10 @@ class Comandos(commands.Cog):
     @commands.command()
     async def info(self, ctx):
         await ctx.send(internal_services.get_bot_info())
+
+    @commands.command()
+    async def versao(self, ctx, version):
+        await ctx.send(internal_services.get_version_details(version))
     
 
 

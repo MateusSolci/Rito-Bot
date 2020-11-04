@@ -1,6 +1,8 @@
 import Database_Controller.repository as repository
 import Database_Controller.models.info_table_model as models
 import json
+from datetime import datetime
+import logging
 
 def get_bot_info():
     info_bot_entity = repository.get_latest_version()
@@ -10,6 +12,14 @@ def get_bot_info():
         "Atualmente estamos na versão: " + version_and_comment(info_bot_entity[1]) + "\n" +
         "Contamos com um total de " + formatted_num_users(info_bot_entity[2])
     )
+
+
+def get_version_details(version):
+    info_bot_details = repository.get_version_details(str(version))
+    if info_bot_details == None: return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
+    return("Versão: " + info_bot_details[0] + "\n" +
+    "Lançada em: " + info_bot_details[1].strftime("%m/%d/%y") + "\n" +
+    "Detalhes: " + info_bot_details[2])
 
 
 def names_to_formatted_string(devs):

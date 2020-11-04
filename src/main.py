@@ -19,13 +19,14 @@ def main():
     for modulo in modulos:
         bot.load_extension(modulo)
 
-    # bot.run(os.environ.get('token'))
 
-    # print(services.get_bot_info())
+    bot.run(os.environ.get('token'))
+
+    #print(services.get_version_details(0.1))
 
     riot_api_url = "https://br1.api.riotgames.com"
 
-    print(concat_info(riot_api_url, "To Voante"))
+    #print(concat_info(riot_api_url, "To Voante"))
 
 
 
