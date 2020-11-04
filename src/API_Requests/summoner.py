@@ -2,31 +2,31 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
-from API_Requests.any_request import *
+from API_Requests.any_request import make_request
 load_dotenv()
 
 
 # retorna informações do invocador, a partir do nickname
 def summoner_ids(origin, nick):
-    response = Request().makeRequest(origin + "/lol/summoner/v4/summoners/by-name/" + nick + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/summoner/v4/summoners/by-name/" + nick + "?api_key=" + os.environ.get('key'))
 
     return response
 
 
 def get_elo(origin, id):
-    response = Request().makeRequest(origin + "/lol/league/v4/entries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/league/v4/entries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     return response
 
 
 def mastery(origin, id):
-    response = Request().makeRequest(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     return response
 
 
 def live_game(origin, id):
-    response = Request().makeRequest(origin + "/lol/spectator/v4/active-games/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/spectator/v4/active-games/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     return response
 
