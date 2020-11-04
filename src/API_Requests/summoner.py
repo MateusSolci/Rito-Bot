@@ -20,7 +20,9 @@ def get_elo(origin, id):
 
 
 def mastery(origin, id):
+    top_mastery = []
     response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+
 
     return response
 
@@ -31,11 +33,19 @@ def live_game(origin, id):
     return response
 
 
-def summoner_info(self, origin, nick):
+def concat_info(origin, nick):
+    summonerDict = {}
+
     IDs = summoner_ids(origin, nick)
     elo = get_elo(origin, IDs['id'])
-    mastery = mastery(origin, IDs['id'])
 
-    summonerJson = {}
+    # summonerDict['ID'] = IDs['id']
+    # summonerDict['Ícone'] = IDs['profileIconId']
+    summonerDict['Nome'] = IDs['name']
+    summonerDict['Level'] = IDs['summonerLevel']
+    summonerDict['Rank'] = elo[0]['tier'] + " " + elo[0]['rank']
+    summonerDict['Vitorias'] = elo[0]['wins']
+    summonerDict['Derrotas'] = elo[0]['losses']
 
-    return summonerJson
+    return summonerDict
+
