@@ -1,4 +1,4 @@
-from DatabaseController.Connection import Connection
+from Database_Controller.Connection import Connection
 
 
 def test_singleton_behaviour():

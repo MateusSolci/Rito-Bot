@@ -2,11 +2,10 @@ import requests
 import json
 
 # retorna o resultado de qualquer request em json
-class Request():
-    def makeRequest(self, url):
-        try:
-            response = requests.get(url).json()
-        except:
-            response = '*Bad Request*'
+def make_request(url):
+    try:
+        response = requests.get(url).json()
+    except:
+        response = '*Bad Request*'
 
-        return response
+    return response

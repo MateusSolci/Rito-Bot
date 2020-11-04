@@ -2,8 +2,9 @@ import os
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
-from API_Requests.ChampionsService import *
-from API_Requests.summoner import *
+import API_Requests.champions_service as champion_service
+import API_Requests.summoner as summoner
+import Bot_Services.internal_services as internal_services
 load_dotenv()
 
 class Comandos(commands.Cog):
@@ -17,11 +18,11 @@ class Comandos(commands.Cog):
     
     @commands.command()
     async def rotation(self,ctx):
-        await ctx.send(Champion().champ_rotation(self.riot_api_url))
+        await ctx.send(champion_service.champ_rotation(self.riot_api_url))
 
     @commands.command()
     async def invocador(self, ctx, nick):
-        await ctx.send(Summoner().summoner_info(self.riot_api_url, nick))
+        await ctx.send(summoner.summoner_info(self.riot_api_url, nick))
 
     @commands.command()
     async def nice(self,ctx):
@@ -29,7 +30,7 @@ class Comandos(commands.Cog):
 
     @commands.command()
     async def info(self, ctx):
-        await ctx.send()
+        await ctx.send(internal_services.get_bot_info())
     
 
 

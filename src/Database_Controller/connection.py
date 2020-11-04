@@ -15,14 +15,19 @@ class SingletonMeta(type):
         return cls._instances[cls]
 
 class Connection(metaclass=SingletonMeta):
-    _db = None
-
 
     def __init__(self):
-        if self._db == None:
-            self._db = psycopg2.connect(host = os.environ["host"],
-            database = os.environ["database"],
-            user = os.environ["db_user"],
-            password = os.environ["db_passwd"])
+        self.conn = psycopg2.connect(host = os.environ["host"],
+        database = os.environ["database"],
+        user = os.environ["db_user"],
+        password = os.environ["db_passwd"])
+        self.cur = self.conn.cursor()
+
+    def query(self, query):
+        self.cur.execute(query)
+
+    def close(self):
+        self.cur.close()
+        self.conn.close()
 
 

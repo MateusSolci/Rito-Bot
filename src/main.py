@@ -2,13 +2,12 @@ import os
 import discord
 from dotenv import load_dotenv
 from discord.ext.commands import AutoShardedBot
-from API_Requests.ChampionsService import *
-from API_Requests.summoner import *
+import Bot_Services.internal_services as services
 
 load_dotenv()
 
 def main():
-    modulos = ["discordBot"]
+    modulos = ["discord_bot"]
     bot = AutoShardedBot(command_prefix='-', case_sensitive=True)
 
     @bot.event
@@ -19,10 +18,12 @@ def main():
     for modulo in modulos:
         bot.load_extension(modulo)
 
-    # bot.run(os.environ.get('token'))
+    bot.run(os.environ.get('token'))
 
-    riot_api_url = "https://br1.api.riotgames.com"
-    print(Summoner().summoner_ids(riot_api_url, "To Voante"))
+    print(services.get_bot_info())
+
+    #riot_api_url = "https://br1.api.riotgames.com"
+    #print(Summoner().summoner_ids(riot_api_url, "To Voante"))
 
 
 if __name__ == "__main__":
