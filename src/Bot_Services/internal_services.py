@@ -8,7 +8,7 @@ def get_bot_info():
     
     return("Você tá curtindo nosso Rito-Bot, criado pelos gatão: " + names_to_formatted_string(progbois.devs) + "\n" +
         "Atualmente estamos na versão: " + version_and_comment(info_bot_entity[1]) + "\n" +
-        "Contamos com um total de: " + formatted_num_users(info_bot_entity[2])
+        "Contamos com um total de " + formatted_num_users(info_bot_entity[2])
     )
 
 
