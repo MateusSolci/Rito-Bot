@@ -30,7 +30,7 @@ def mastery(origin, id):
         else:
             count += 1
             # print(x)
-            
+        
     return response
 
 
@@ -47,8 +47,8 @@ def concat_info(origin, nick):
     elo = get_elo(origin, IDs['id'])
     mastery(origin, IDs['id'])
 
-    # summonerDict['ID'] = IDs['id']
-    # summonerDict['Ícone'] = IDs['profileIconId']
+    summonerDict['ID'] = IDs['id']
+    summonerDict['Ícone'] = IDs['profileIconId']
     summonerDict['Nome'] = IDs['name']
     summonerDict['Level'] = IDs['summonerLevel']
     if not elo:
