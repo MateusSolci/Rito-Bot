@@ -18,7 +18,7 @@ def names_to_formatted_string(devs):
 
 
 def version_and_comment(version):
-    if (float(version) < 0.5): return version + " (essa versão ainda é alfa... você só pode ser um tester)"
+    if (float(version) < 0.5): return version + " (essa versão ainda é alfa... você só pode ser um tester) (:౦ ‸ ౦:)"
     if (float(version) < 1.0): return version + " (essa é a versão beta, logo logo nosso bot tá lançado!)"
     return version + " (para mais detalhes dessa versão use o comando -versao <versao>)"
 
