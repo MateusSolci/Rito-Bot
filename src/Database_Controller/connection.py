@@ -25,6 +25,7 @@ class Connection(metaclass=SingletonMeta):
 
     def query(self, query):
         self.cur.execute(query)
+        self.conn.commit()
 
     def close(self):
         self.cur.close()

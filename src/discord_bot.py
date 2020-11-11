@@ -22,7 +22,8 @@ class Comandos(commands.Cog):
 
     @commands.command()
     async def invocador(self, ctx, nick):
-        invocador = summoner.concat_info(self.riot_api_url, nick)
+        discord_id = ctx.message.author.id
+        invocador = summoner.concat_info(self.riot_api_url, nick, discord_id)
         reponse = ""
 
         if 'Unranked' in invocador.values():
@@ -32,8 +33,10 @@ class Comandos(commands.Cog):
             reponse = ("Olá " + invocador['Nome'] + "!\n"
                         "Sua conta está nível " + str(invocador['Level']) + " no rank " + invocador['Rank'] + "\n"
                         "Com " + str(invocador['Vitorias']) + " vitorias e " + str(invocador['Derrotas']) + " derrotas nessa temporada!")
-
+        if 'Level_Consultado' in invocador.keys():
+            reponse += "\n anteriormente era level " + str(invocador['Level_Consultado']) + "!"
         await ctx.send(reponse)
+
 
     @commands.command()
     async def nice(self,ctx):
