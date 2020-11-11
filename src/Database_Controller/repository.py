@@ -30,7 +30,7 @@ def get_level_by_summoner_id(discord_id, summoner_id):
     try:
         db.cur.execute(
             """
-            select id_summoner, level_consultado, discord_id
+            select id_summoner, level_consultado, discord_id, ultima_consulta
             from tabela_user
             where id_summoner like %s and discord_id like '%s'
             """, (summoner_id, discord_id)

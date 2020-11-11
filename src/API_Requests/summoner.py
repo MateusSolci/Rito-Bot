@@ -58,6 +58,7 @@ def concat_info(origin, nick, discord_id):
 
     if level_response != None:
         summonerDict['Level_Consultado'] = level_response[1]
+        summonerDict['Data'] = level_response[3]
 
     summonerDict['ID'] = summoner_id
     summonerDict['Ícone'] = IDs['profileIconId']
