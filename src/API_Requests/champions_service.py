@@ -30,7 +30,9 @@ def champ_rotation(origin):
 
     return "\n".join(weekly_rotation)
 
-#retorna o ultimo patch note    
+# retorna o ultimo patch note
+
+
 def get_last_patch():
     versions = 'https://ddragon.leagueoflegends.com/api/versions.json'
     
