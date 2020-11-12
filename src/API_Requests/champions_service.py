@@ -5,10 +5,10 @@ load_dotenv()
 
 
 # retorna as informações de um determinado champion (por id)
-def search_champion(id, champList): 
-    for champ in champList["data"]:
-        if champList["data"][champ]["key"] == str(id):
-            champion = champList["data"][champ]
+def search_champion(id, champ_list):
+    for champ in champ_list["data"]:
+        if champ_list["data"][champ]["key"] == str(id):
+            champion = champ_list["data"][champ]
         else:
             pass
 
