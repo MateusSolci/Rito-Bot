@@ -31,7 +31,6 @@ def main():
     # print(concat_info(riot_api_url, "To Voante"))
 
 
-
 if __name__ == "__main__":
     main()
     
