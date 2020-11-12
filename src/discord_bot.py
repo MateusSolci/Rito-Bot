@@ -34,7 +34,9 @@ class Comandos(commands.Cog):
                         "Sua conta está nível " + str(invocador['Level']) + " no rank " + invocador['Rank'] + "\n"
                         "Com " + str(invocador['Vitorias']) + " vitorias e " + str(invocador['Derrotas']) + " derrotas nessa temporada!")
         if 'Level_Consultado' in invocador.keys():
-            reponse += "\n anteriormente era level " + str(invocador['Level_Consultado']) + "!"
+            reponse += ("\n anteriormente era level " + str(invocador['Level_Consultado']) + "!\n" + "não lembra quando consultou? Eu lembro... foi em " + str(invocador['Data']) + " (o¬‿¬o )..."
+
+            )
         await ctx.send(reponse)
 
 
