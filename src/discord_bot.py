@@ -8,8 +8,10 @@ import Bot_Services.internal_services as internal_services
 from datetime import datetime
 load_dotenv()
 
+
 class Comandos(commands.Cog):
     riot_api_url = "https://br1.api.riotgames.com"
+
     def __init__(self, bot):
         self.bot = bot
     
@@ -52,7 +54,6 @@ class Comandos(commands.Cog):
     async def versao(self, ctx, version):
         await ctx.send(internal_services.get_version_details(version))
     
-
 
 def setup(client):
     client.add_cog(Comandos(client))
