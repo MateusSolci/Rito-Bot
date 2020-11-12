@@ -22,12 +22,10 @@ def main():
 
     bot.run(os.environ.get('token'))
 
-    #print(services.get_version_details(0.1))
 
-    # riot_api_url = "https://br1.api.riotgames.com"
-    # concat_info(riot_api_url, "HiimSolci", 278345437302489088)
+    riot_api_url = "https://br1.api.riotgames.com"
+    print(mastery(riot_api_url, 'EUgXFufB1TLYM7dMlfJtCvqp2Kfn_icyR3iGIHfixeI8IkU'))
 
-    #print(concat_info(riot_api_url, "To Voante"))
 
 
 
