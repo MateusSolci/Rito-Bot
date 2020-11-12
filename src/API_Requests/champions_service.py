@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from API_Requests.any_request import make_request
+import logging
 load_dotenv()
 
 
@@ -18,6 +19,7 @@ def search_champion(id, champ_list):
 
 
 def champ_rotation(origin):
+    logging.log("champions_service.champ_rotation")
     weekly_rotation = []
     champions_info_url = "http://ddragon.leagueoflegends.com/cdn/" + get_last_patch() + "/data/en_US/champion.json"
     
@@ -34,6 +36,7 @@ def champ_rotation(origin):
 
 
 def get_last_patch():
+    logging.log("champions_service.get_last_patch")
     versions = 'https://ddragon.leagueoflegends.com/api/versions.json'
     
     parsed_versions = make_request(versions)

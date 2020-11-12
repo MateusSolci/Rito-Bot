@@ -6,6 +6,7 @@ import logging
 
 
 def get_bot_info():
+    logging.log("internal_services.get_bot_info")
     info_bot_entity = repository.get_latest_version()
     progbois = models.info_dev([models.dev(**brother) for brother in json.loads(info_bot_entity[3])])
 
@@ -15,6 +16,7 @@ def get_bot_info():
 
 
 def get_version_details(version):
+    logging.log("internal_services.get_version_details")
     info_bot_details = repository.get_version_details(str(version))
     if info_bot_details is None: return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
     return("Versão: " + info_bot_details[0] + "\n" +
@@ -28,11 +30,14 @@ def names_to_formatted_string(devs):
 
 
 def version_and_comment(version):
-    if (float(version) < 0.5): return version + " (essa versão ainda é alfa... você só pode ser um tester) (:౦ ‸ ౦:)"
-    if (float(version) < 1.0): return version + " (essa é a versão beta, logo logo nosso bot tá lançado!)"
+    if float(version) < 0.5:
+        return version + " (essa versão ainda é alfa... você só pode ser um tester) (:౦ ‸ ౦:)"
+    if float(version) < 1.0:
+        return version + " (essa é a versão beta, logo logo nosso bot tá lançado!)"
     return version + " (para mais detalhes dessa versão use o comando -versao <versao>)"
 
 
 def formatted_num_users(num_users):
-    if (num_users == 0): return str(num_users) + " usuários... (╥﹏╥)"
+    if num_users == 0:
+        return str(num_users) + " usuários... (╥﹏╥)"
     return num_users + " usuários... (─‿‿─)♡"
