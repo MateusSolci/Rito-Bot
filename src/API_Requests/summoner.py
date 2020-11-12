@@ -31,9 +31,9 @@ def mastery(origin, id):
             break
         else:
             count += 1
-            # print(x)
+            top_mastery.append(x)
         
-    return response
+    return top_mastery
 
 
 def live_game(origin, id):
@@ -49,6 +49,8 @@ def concat_info(origin, nick, discord_id):
     IDs = summoner_ids(origin, nick)
     elo = get_elo(origin, IDs['id'])
     mastery(origin, IDs['id'])
+
+    print(elo)
 
     sumonner_level = IDs['summonerLevel']
     summoner_id = IDs['id']

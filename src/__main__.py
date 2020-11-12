@@ -3,6 +3,7 @@ import discord
 from dotenv import load_dotenv
 from discord.ext.commands import AutoShardedBot
 from API_Requests.summoner import *
+import Bot_Services.internal_services as services
 
 load_dotenv()
 
@@ -19,6 +20,7 @@ def main():
     for modulo in modulos:
         bot.load_extension(modulo)
 
+
     bot.run(os.environ.get('token'))
 
     # print(services.get_version_details(0.1))
@@ -27,6 +29,7 @@ def main():
     # concat_info(riot_api_url, "HiimSolci", 278345437302489088)
 
     # print(concat_info(riot_api_url, "To Voante"))
+
 
 
 if __name__ == "__main__":
