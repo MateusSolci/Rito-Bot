@@ -5,6 +5,7 @@ from discord.ext import commands
 import API_Requests.champions_service as champion_service
 import API_Requests.summoner as summoner
 import Bot_Services.internal_services as internal_services
+from datetime import datetime
 load_dotenv()
 
 class Comandos(commands.Cog):
@@ -24,19 +25,18 @@ class Comandos(commands.Cog):
     async def invocador(self, ctx, nick):
         discord_id = ctx.message.author.id
         invocador = summoner.concat_info(self.riot_api_url, nick, discord_id)
-        reponse = ""
+        reponse = "Olá " + invocador['Nome'] + "!\nSua conta está nível " + str(invocador['Level'])
 
         if 'Unranked' in invocador.values():
-            reponse = ("Olá " + invocador['Nome'] + "!\n"
-                        "Sua conta está nível " + str(invocador['Level']) + " sem rank no momento. ")
+            reponse += " sem rank no momento. "
         else:
-            reponse = ("Olá " + invocador['Nome'] + "!\n"
-                        "Sua conta está nível " + str(invocador['Level']) + " no rank " + invocador['Rank'] + "\n"
-                        "Com " + str(invocador['Vitorias']) + " vitorias e " + str(invocador['Derrotas']) + " derrotas nessa temporada!")
+            reponse += (" no rank " + invocador['Rank'] + "\n"
+                        "Com " + str(invocador['Vitorias']) + " vitorias e " + str(invocador['Derrotas']) +
+                        " derrotas nessa temporada!")
         if 'Level_Consultado' in invocador.keys():
-            reponse += ("\n anteriormente era level " + str(invocador['Level_Consultado']) + "!\n" + "não lembra quando consultou? Eu lembro... foi em " + str(invocador['Data']) + " (o¬‿¬o )..."
-
-            )
+            reponse += ("\nAnteriormente era level " + str(invocador['Level_Consultado']) + "!\n.\n.\n.\n" +
+                        "Não lembra quando consultou? Eu lembro... foi em " + invocador['Data'].strftime("%d/%m/%Y") +
+                        " (¬‿¬)...")
         await ctx.send(reponse)
 
 

@@ -1,6 +1,7 @@
 from Database_Controller.connection import Connection
 
-def get_latest_version():
+
+def get_latest_version() -> dict:
     db = Connection()
     db.query(
         "select * from tabela_info " +
@@ -10,7 +11,7 @@ def get_latest_version():
     return response
 
 
-def get_version_details(version):
+def get_version_details(version: str) -> dict:
     db = Connection()
     try:
         db.cur.execute("""
