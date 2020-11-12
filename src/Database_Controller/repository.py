@@ -1,9 +1,7 @@
 from Database_Controller.connection import Connection
-import logging
 
 
 def get_latest_version() -> dict:
-    logging.log("repository.get_latest_version")
     db = Connection()
     db.query(
         "select * from tabela_info " +
@@ -14,7 +12,6 @@ def get_latest_version() -> dict:
 
 
 def get_version_details(version: str) -> dict:
-    logging.log("repository.get_version_details")
     db = Connection()
     try:
         db.cur.execute("""
@@ -24,13 +21,12 @@ def get_version_details(version: str) -> dict:
         )
         response = db.cur.fetchone()
     except Exception as err:
-        logging.error(err)
+        print(err)
         response = None
     return response
 
 
 def get_level_by_summoner_id(discord_id, summoner_id):
-    logging.log("repository.get_level_by_summoner_id")
     db = Connection()
     try:
         db.cur.execute(
@@ -42,13 +38,12 @@ def get_level_by_summoner_id(discord_id, summoner_id):
         )
         response = db.cur.fetchone()
     except Exception as err:
-        logging.error(err)
+        print(err)
         response = None
     return response
 
 
 def update_last_search(discord_id, summoner_id, summoner_level, date):
-    logging.log("repository.update_last_search")
     db = Connection()
     
     try:
@@ -62,4 +57,4 @@ def update_last_search(discord_id, summoner_id, summoner_level, date):
         )
         db.conn.commit()
     except Exception as err:
-        logging.error(err)
+        print(err)

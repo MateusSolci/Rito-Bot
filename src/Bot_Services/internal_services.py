@@ -2,11 +2,9 @@ import Database_Controller.repository as repository
 import Database_Controller.models.info_table_model as models
 import json
 from datetime import datetime
-import logging
 
 
 def get_bot_info():
-    logging.log("internal_services.get_bot_info")
     info_bot_entity = repository.get_latest_version()
     progbois = models.info_dev([models.dev(**brother) for brother in json.loads(info_bot_entity[3])])
 
@@ -16,7 +14,6 @@ def get_bot_info():
 
 
 def get_version_details(version):
-    logging.log("internal_services.get_version_details")
     info_bot_details = repository.get_version_details(str(version))
     if info_bot_details is None: return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
     return("Versão: " + info_bot_details[0] + "\n" +

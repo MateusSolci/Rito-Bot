@@ -5,27 +5,23 @@ from dotenv import load_dotenv
 from API_Requests.any_request import make_request
 from Database_Controller.repository import update_last_search, get_level_by_summoner_id
 from datetime import date
-import logging
 load_dotenv()
 
 
 # retorna informações do invocador, a partir do nickname
 def summoner_ids(origin, nick):
-    logging.log("summoner.summoner_ids")
     response = make_request(origin + "/lol/summoner/v4/summoners/by-name/" + nick + "?api_key=" + os.environ.get('key'))
 
     return response
 
 
 def get_elo(origin, id):
-    logging.log("summoner.get_elo")
     response = make_request(origin + "/lol/league/v4/entries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     return response
 
 
 def mastery(origin, id):
-    logging.log("summoner.mastery")
     top_mastery = []
     count = 0
     response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
@@ -41,7 +37,6 @@ def mastery(origin, id):
 
 
 def live_game(origin, id):
-    logging.log("summoner.live_game")
     response = make_request(origin + "/lol/spectator/v4/active-games/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     return response
@@ -81,6 +76,5 @@ def concat_info(origin, nick, discord_id):
 
 
 def prepare_query_for_level(discord_id, summoner_id, summoner_level):
-    logging.log("creating query for level")
     now = date.today().strftime("%d-%m-%Y")
     update_last_search(discord_id, summoner_id, summoner_level, now)
