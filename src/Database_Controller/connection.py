@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 class SingletonMeta(type):
 
     _instances = {}
@@ -14,13 +15,14 @@ class SingletonMeta(type):
             cls._instances[cls] = instance
         return cls._instances[cls]
 
+
 class Connection(metaclass=SingletonMeta):
 
     def __init__(self):
-        self.conn = psycopg2.connect(host = os.environ["host"],
-        database = os.environ["database"],
-        user = os.environ["db_user"],
-        password = os.environ["db_passwd"])
+        self.conn = psycopg2.connect(host = os.environ["PGHOST"],
+                                     database = os.environ["PGDATABASE"],
+                                     user = os.environ["PGUSER"],
+                                     password = os.environ["PGPASSWORD"])
         self.cur = self.conn.cursor()
 
     def query(self, query):
