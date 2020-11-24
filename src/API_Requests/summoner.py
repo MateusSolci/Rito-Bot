@@ -55,6 +55,7 @@ def concat_info(origin, nick, discord_id):
     summoner_id = IDs['id']
 
     level_response = get_level_by_summoner_id(discord_id, summoner_id)
+    print(level_response)
     prepare_query_for_level(discord_id, summoner_id, sumonner_level)
 
     if level_response is not None:
@@ -76,5 +77,5 @@ def concat_info(origin, nick, discord_id):
 
 
 def prepare_query_for_level(discord_id, summoner_id, summoner_level):
-    now = date.today().strftime("%d-%m-%Y")
+    now = date.today().strftime("%Y-%m-%d")
     update_last_search(discord_id, summoner_id, summoner_level, now)
