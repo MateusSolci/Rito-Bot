@@ -9,11 +9,11 @@
 def up(cursor):
     # TODO migration code
     cursor.execute('CREATE TABLE tabela_info(' +
-    'data_versao date,' +
-    'versao varchar(10) PRIMARY KEY,' +
-    'quantidade_usuarios int,' +
-    'info_time_dev varchar(1000),' +
-    'detalhes_versao text)')
+                   'data_versao date,' +
+                   'versao varchar(10) PRIMARY KEY,' +
+                   'quantidade_usuarios int,' +
+                   'info_time_dev varchar(1000),' +
+                   'detalhes_versao text)')
 
     # if a super user database connection is needed
     # from dbmigrator import super_user
