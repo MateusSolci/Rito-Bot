@@ -1,2 +1,2 @@
-release: dbmigrator --config=development.ini migrate
+release: dbmigrator migrate
 worker: python src/__main__.py
