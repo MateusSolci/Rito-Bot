@@ -1,13 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 from threading import Thread
 import os
 
-app = Flask('')
+app = Flask(__name__, template_folder='templates')
 
 
 @app.route('/')
 def home():
-    return "I'm alive"
+    return render_template('index.html')
 
 
 def run():
