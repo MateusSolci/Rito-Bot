@@ -11,8 +11,10 @@ from datetime import datetime
 from __main__ import AutoShardedBot
 load_dotenv()
 
+
 class Comandos(commands.Cog):
     riot_api_url = "https://br1.api.riotgames.com"
+
     def __init__(self, bot):
         self.bot = bot
     

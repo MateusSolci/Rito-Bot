@@ -45,7 +45,6 @@ def live_game(origin, id):
 def concat_info(origin, nick, discord_id):
     summonerDict = {}
 
-
     IDs = summoner_ids(origin, nick)
     elo = get_elo(origin, IDs['id'])
     mastery(origin, IDs['id'])
@@ -56,9 +55,10 @@ def concat_info(origin, nick, discord_id):
     summoner_id = IDs['id']
 
     level_response = get_level_by_summoner_id(discord_id, summoner_id)
+    print(level_response)
     prepare_query_for_level(discord_id, summoner_id, sumonner_level)
 
-    if level_response != None:
+    if level_response is not None:
         summonerDict['Level_Consultado'] = level_response[1]
         summonerDict['Data'] = level_response[3]
 
@@ -77,5 +77,5 @@ def concat_info(origin, nick, discord_id):
 
 
 def prepare_query_for_level(discord_id, summoner_id, summoner_level):
-    now = date.today().strftime("%d-%m-%Y")
+    now = date.today().strftime("%Y-%m-%d")
     update_last_search(discord_id, summoner_id, summoner_level, now)
