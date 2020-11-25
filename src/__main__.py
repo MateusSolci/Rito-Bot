@@ -34,7 +34,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
 
 # PROXIMAS FUNÇÕES:
 # - TOP 3 CHAMP MASTERY - /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}

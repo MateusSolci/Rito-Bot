@@ -4,3 +4,6 @@ env
 .idea
 .vscode
 venv
+build
+dist
+Rito_Bot.egg-info
