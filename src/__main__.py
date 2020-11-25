@@ -27,6 +27,14 @@ def main():
 
     # print(services.get_version_details(0.1))
 
+<<<<<<< HEAD
+=======
+    # riot_api_url = "https://br1.api.riotgames.com"
+    # concat_info(riot_api_url, "HiimSolci", 278345437302489088)
+
+    # print(concat_info(riot_api_url, "To Voante"))
+
+>>>>>>> d8934bc1221e16870ff3134bde9075abdc01123b
 
 if __name__ == "__main__":
     main()

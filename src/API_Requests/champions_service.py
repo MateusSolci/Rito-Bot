@@ -34,6 +34,9 @@ def champ_rotation(origin):
 # retorna o ultimo patch note
 
 
+# retorna o ultimo patch note
+
+
 def get_last_patch():
     versions = 'https://ddragon.leagueoflegends.com/api/versions.json'
     
