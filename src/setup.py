@@ -13,7 +13,8 @@ setup(
     entry_points={
         'dbmigrator': [
             'migrations_directory = Database_Controller.config:migrations_directory',
-            'db-connection-string = Database_Controller.config:connection_string'
+            'db-connection-string = Database_Controller.config:connection_string',
+            'context = Database_Controller.config:context',
         ],
     },
 )
