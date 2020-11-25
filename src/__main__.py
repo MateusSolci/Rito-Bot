@@ -11,6 +11,7 @@ load_dotenv()
 def main():
     modulos = ["discord_bot"]
     bot = AutoShardedBot(command_prefix='-', case_sensitive=True)
+    bot.remove_command('help')
 
     @bot.event
     async def on_ready():
@@ -25,11 +26,6 @@ def main():
 
     # print(services.get_version_details(0.1))
 
-    # riot_api_url = "https://br1.api.riotgames.com"
-    # concat_info(riot_api_url, "HiimSolci", 278345437302489088)
-
-    # print(concat_info(riot_api_url, "To Voante"))
-
 
 
 if __name__ == "__main__":
@@ -38,5 +34,5 @@ if __name__ == "__main__":
 
 # PROXIMAS FUNÇÕES:
 # - TOP 3 CHAMP MASTERY - /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}
-# - ELO - /lol/league/v4/entries/by-summoner/{encryptedSummonerId}  - *CORRIGIR*
-# - GAME AO VIVO - /lol/spectator/v4/active-games/by-summoner/{encryptedSummonerId}
+# - ELO - /lol/league/v4/entries/by-summoner/{encryptedSummonerId}  - *INCLUIR ICONE DE ELO*
+

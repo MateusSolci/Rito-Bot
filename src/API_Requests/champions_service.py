@@ -14,9 +14,8 @@ def search_champion(id, champList):
 
     return champion
 
+
 # retorna a rotação semanal de campeões
-
-
 def champ_rotation(origin):
     weekly_rotation = []
     champions_info_url = "http://ddragon.leagueoflegends.com/cdn/" + get_last_patch() + "/data/en_US/champion.json"
@@ -28,7 +27,9 @@ def champ_rotation(origin):
         champ = search_champion(champ_id, champ_list)
         weekly_rotation.append(champ["name"])
 
-    return "\n".join(weekly_rotation)
+    # return "\n".join(weekly_rotation)
+    return weekly_rotation
+
 
 #retorna o ultimo patch note    
 def get_last_patch():
@@ -38,3 +39,12 @@ def get_last_patch():
 
     return parsed_versions[0]
 
+
+# retorna imagem do campeao
+def champ_icon(champs):
+    icons = []
+    patch = get_last_patch()
+    for champ in champs:
+        icons.append('http://ddragon.leagueoflegends.com/cdn/'+ patch +'/img/champion/'+ champ +'.png')
+
+    return icons
