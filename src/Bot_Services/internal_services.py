@@ -5,7 +5,7 @@ import json
 
 def get_bot_info():
     info_bot_entity = repository.get_latest_version()
-    print("internal_services.get_bot_info -> versão buscada no banco")
+    print("internal_services.get_bot_info -> info buscada no banco")
     progbois = models.info_dev([models.dev(**brother) for brother in json.loads(info_bot_entity[3])])
 
     return("Você está curtindo nosso Rito-Bot, criado por: " + names_to_formatted_string(progbois.devs) + ".\n\n" +
@@ -15,7 +15,7 @@ def get_bot_info():
 
 def get_version_details(version):
     info_bot_details = repository.get_version_details(str(version))
-    print("internar_services.get_version_details -> retorno do banco: " + str(info_bot_details))
+    print("internar_services.get_version_details -> detalhes da versão buscada no banco")
     if info_bot_details is None:
         return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
     return("Versão: " + info_bot_details[0] + "\n" +
