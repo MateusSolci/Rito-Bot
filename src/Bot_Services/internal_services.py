@@ -33,6 +33,7 @@ def version_and_comment(version):
         return version + " (essa versão ainda é alfa... você só pode ser um tester) (:౦ ‸ ౦:)"
     if float(version) < 1.0:
         return version + " (essa é a versão beta, logo logo nosso bot estará lançado!)"
+    return version
 
 
 def formatted_num_users(num_users):
