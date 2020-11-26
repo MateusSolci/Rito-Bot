@@ -22,7 +22,6 @@ def main():
     for modulo in modulos:
         bot.load_extension(modulo)
 
-    # keep_alive()
     bot.run(os.environ.get('token'))
 
 
