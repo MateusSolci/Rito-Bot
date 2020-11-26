@@ -23,7 +23,7 @@ class Comandos(commands.Cog):
     async def alo(self, ctx):
         embed = discord.Embed(colour = discord.Colour.gold())
         embed.set_thumbnail(url='https://vignette.wikia.nocookie.net/leagueoflegends/images/d/dc/M%27Pengu_Emote.png/revision/latest?cb=20171121000318')
-        embed.set_author(name='Saudações usuário')
+        embed.set_author(name='Saudações '+ str(ctx.message.author.nick))
 
         await ctx.send(embed=embed)
 
