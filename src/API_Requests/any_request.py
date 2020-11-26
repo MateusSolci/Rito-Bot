@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 # retorna o resultado de qualquer request em json
 def make_request(url):
     try:

@@ -19,10 +19,10 @@ class SingletonMeta(type):
 class Connection(metaclass=SingletonMeta):
 
     def __init__(self):
-        self.conn = psycopg2.connect(host = os.environ["PGHOST"],
-                                     database = os.environ["PGDATABASE"],
-                                     user = os.environ["PGUSER"],
-                                     password = os.environ["PGPASSWORD"])
+        self.conn = psycopg2.connect(host=os.environ["PGHOST"],
+                                     database=os.environ["PGDATABASE"],
+                                     user=os.environ["PGUSER"],
+                                     password=os.environ["PGPASSWORD"])
         self.cur = self.conn.cursor()
 
     def query(self, query):

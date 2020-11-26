@@ -9,6 +9,7 @@ import API_Requests.summoner as summoner
 import Bot_Services.internal_services as internal_services
 from datetime import datetime
 from __main__ import AutoShardedBot
+import typing
 load_dotenv()
 
 
@@ -27,7 +28,7 @@ class Comandos(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def rotation(self,ctx):
+    async def rotation(self, ctx):
         embed = discord.Embed(colour = discord.Colour.gold())
         champs = champion_service.champ_rotation(self.riot_api_url)
         icons = champion_service.champ_icon(champs)
@@ -37,7 +38,6 @@ class Comandos(commands.Cog):
 
             await ctx.send(embed=embed)
             time.sleep(0.5)
-            
 
     @commands.command()
     async def perfil(self, ctx, nick):
@@ -66,7 +66,6 @@ class Comandos(commands.Cog):
                                 'Seu nível era: **'+ str(invocador['Level_Consultado']) +'**', inline=False)
 
         await ctx.send(embed=embed)
-
 
     @commands.command()
     async def dance(self,ctx):
@@ -97,7 +96,7 @@ class Comandos(commands.Cog):
 
     @commands.command(pass_context=True)
     async def help(self, ctx):
-        embed = discord.Embed(colour = discord.Colour.gold())
+        embed = discord.Embed(colour=discord.Colour.gold())
         embed.set_author(name='Meus Comandos', icon_url='https://images.emojiterra.com/twitter/512px/1f916.png')
         embed.set_thumbnail(url='https://vignette.wikia.nocookie.net/leagueoflegends/images/1/1b/Does_Not_Compute_Emote.png/revision/20171120235503')
         embed.add_field(name='-alo', value='saudações',inline=False)
@@ -108,6 +107,7 @@ class Comandos(commands.Cog):
         embed.add_field(name='-versao', value='<numero> | Detalhes da versão',inline=False)
 
         await ctx.send(embed=embed)
+
 
 #------------------------------------------
 def setup(client):

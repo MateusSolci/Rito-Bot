@@ -7,16 +7,18 @@ from Database_Controller.repository import update_last_search, get_level_by_summ
 from datetime import date
 load_dotenv()
 
+api_key_parameter = "?api_key=" + os.environ.get('key')
+
 
 # retorna informações do invocador, a partir do nickname
 def summoner_ids(origin, nick):
-    response = make_request(origin + "/lol/summoner/v4/summoners/by-name/" + nick + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/summoner/v4/summoners/by-name/" + nick + api_key_parameter)
 
     return response
 
 
 def get_elo(origin, id):
-    response = make_request(origin + "/lol/league/v4/entries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/league/v4/entries/by-summoner/" + id + api_key_parameter)
 
     return response
 
@@ -24,7 +26,7 @@ def get_elo(origin, id):
 def mastery(origin, id):
     top_mastery = []
     count = 0
-    response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + api_key_parameter)
 
     for x in response:
         if(count == 3):
@@ -32,12 +34,12 @@ def mastery(origin, id):
         else:
             count += 1
             top_mastery.append(x)
-        
+
     return top_mastery
 
 
 def live_game(origin, id):
-    response = make_request(origin + "/lol/spectator/v4/active-games/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
+    response = make_request(origin + "/lol/spectator/v4/active-games/by-summoner/" + id + api_key_parameter)
 
     return response
 
@@ -53,12 +55,12 @@ def concat_info(origin, nick, discord_id):
 
     elo = get_elo(origin, IDs['id'])
 
-    sumonner_level = IDs['summonerLevel']
+    summoner_level = IDs['summonerLevel']
     summoner_id = IDs['id']
 
     level_response = get_level_by_summoner_id(discord_id, summoner_id)
 
-    prepare_query_for_level(discord_id, summoner_id, sumonner_level)
+    prepare_query_for_level(discord_id, summoner_id, summoner_level)
 
     if level_response is not None:
         summonerDict['Level_Consultado'] = level_response[1]
@@ -67,7 +69,7 @@ def concat_info(origin, nick, discord_id):
     summonerDict['ID'] = summoner_id
     summonerDict['Icone'] = IDs['profileIconId']
     summonerDict['Nome'] = IDs['name']
-    summonerDict['Level'] = sumonner_level
+    summonerDict['Level'] = summoner_level
     if not elo:
         summonerDict['Rank'] = 'Unranked'
     else:

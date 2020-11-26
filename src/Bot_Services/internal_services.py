@@ -1,12 +1,11 @@
 import Database_Controller.repository as repository
 import Database_Controller.models.info_table_model as models
 import json
-from datetime import datetime
 
 
 def get_bot_info():
     info_bot_entity = repository.get_latest_version()
-    print(info_bot_entity)
+    print("internal_services.get_bot_info -> versão buscada no banco")
     progbois = models.info_dev([models.dev(**brother) for brother in json.loads(info_bot_entity[3])])
 
     return("Você está curtindo nosso Rito-Bot, criado por: " + names_to_formatted_string(progbois.devs) + ".\n\n" +
@@ -16,8 +15,9 @@ def get_bot_info():
 
 def get_version_details(version):
     info_bot_details = repository.get_version_details(str(version))
-    print(info_bot_details)
-    if info_bot_details is None: return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
+    print("internar_services.get_version_details -> retorno do banco: " + str(info_bot_details))
+    if info_bot_details is None:
+        return "Bip bip, versão não encontrada.\nMe progamaram errado? ( ; ω ; )"
     return("Versão: " + info_bot_details[0] + "\n" +
            "Lançada em: " + info_bot_details[1].strftime("%m/%d/%y") + "\n" +
            "Detalhes: \n\t" + str(info_bot_details[2])).replace("|", "\n\t")
