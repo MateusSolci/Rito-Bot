@@ -27,7 +27,7 @@ def mastery(origin, id):
     response = make_request(origin + "/lol/champion-mastery/v4/champion-masteries/by-summoner/" + id + "?api_key=" + os.environ.get('key'))
 
     for x in response:
-        if(count == 5):
+        if(count == 3):
             break
         else:
             count += 1
@@ -44,18 +44,20 @@ def live_game(origin, id):
 
 def concat_info(origin, nick, discord_id):
     summonerDict = {}
-
+    indice_elo = 0
     IDs = summoner_ids(origin, nick)
-    elo = get_elo(origin, IDs['id'])
-    mastery(origin, IDs['id'])
 
-    print(elo)
+    if 'status' in IDs.keys():
+        summonerDict['Nome'] = None
+        return summonerDict
+
+    elo = get_elo(origin, IDs['id'])
 
     sumonner_level = IDs['summonerLevel']
     summoner_id = IDs['id']
 
     level_response = get_level_by_summoner_id(discord_id, summoner_id)
-    print(level_response)
+
     prepare_query_for_level(discord_id, summoner_id, sumonner_level)
 
     if level_response is not None:
@@ -63,15 +65,21 @@ def concat_info(origin, nick, discord_id):
         summonerDict['Data'] = level_response[3]
 
     summonerDict['ID'] = summoner_id
-    summonerDict['Ícone'] = IDs['profileIconId']
+    summonerDict['Icone'] = IDs['profileIconId']
     summonerDict['Nome'] = IDs['name']
     summonerDict['Level'] = sumonner_level
     if not elo:
         summonerDict['Rank'] = 'Unranked'
     else:
-        summonerDict['Rank'] = elo[0]['tier'] + " " + elo[0]['rank']
-        summonerDict['Vitorias'] = elo[0]['wins']
-        summonerDict['Derrotas'] = elo[0]['losses']
+        if 'RANKED_SOLO_5x5' in elo[0].values():
+            indice_elo = 0
+        else:
+            indice_elo = 1
+
+        summonerDict['Rank'] = elo[indice_elo]['tier'] + " " + elo[indice_elo]['rank']
+        summonerDict['Pontos'] = elo[indice_elo]['leaguePoints']
+        summonerDict['Vitorias'] = elo[indice_elo]['wins']
+        summonerDict['Derrotas'] = elo[indice_elo]['losses']
 
     return summonerDict
 
